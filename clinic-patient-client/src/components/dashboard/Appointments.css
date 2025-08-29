@@ -1,0 +1,629 @@
+/* Modern CSS Variables */
+:root {
+  --primary: #667eea;
+  --primary-start: #764ba2;
+  --primary-dark: #5a6fd8;
+  --secondary: #f093fb;
+  --accent: #4cafef;
+  --accent-dark: #3b8cd9;
+  --bg: #f9fafc;
+  --card-bg: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --border: #e2e8f0;
+  --success: #48bb78;
+  --danger: #f56565;
+  --warning: #ed8936;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Container */
+.appointments-container {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 1.5rem;
+  position: relative;
+}
+
+/* Title Styling */
+.appointments-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.appointments-title::after {
+  content: '📅';
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Section Headers */
+h2 {
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.75rem 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h2:nth-of-type(1)::before { content: '👥'; }
+h2:nth-of-type(2)::before { content: '📋'; }
+h2:nth-of-type(3)::before { content: '✅'; }
+
+/* Patients Table */
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.patients-table thead {
+  background: linear-gradient(135deg, var(--primary-start), var(--primary));
+}
+
+.patients-table th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.patients-table td {
+  padding: 0.875rem 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease;
+}
+
+.patients-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.patients-table tbody tr:hover {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+  transform: scale(1.01);
+}
+
+.patients-table tbody tr:nth-child(even) {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+/* Appointment Booking Form */
+.appointment-form {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 1.25rem;
+  align-items: end;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.appointment-form:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl), 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.appointment-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  border-radius: 20px 20px 0 0;
+}
+
+/* Form Selects & Time Input */
+.appointment-form select,
+.appointment-form input[type="time"] {
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: #f8fafc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.appointment-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.appointment-form input[type="time"] {
+  cursor: pointer;
+}
+
+.appointment-form select:focus,
+.appointment-form input[type="time"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(76, 175, 239, 0.1);
+  background: white;
+  transform: translateY(-2px);
+}
+
+.appointment-form select option {
+  padding: 0.75rem;
+  background: white;
+  color: var(--text-primary);
+}
+
+/* Confirm Button */
+.appointment-form button {
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.appointment-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.appointment-form button:hover::before {
+  left: 100%;
+}
+
+.appointment-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, var(--accent-dark), #2980b9);
+}
+
+.appointment-form button:active {
+  transform: translateY(-1px);
+}
+
+.appointment-form button::after {
+  content: '📋';
+  margin-left: 0.5rem;
+}
+
+/* Appointments Table */
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.appointments-table thead {
+  background: linear-gradient(135deg, var(--success), #38a169);
+}
+
+.appointments-table th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.appointments-table td {
+  padding: 0.875rem 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease;
+}
+
+.appointments-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.appointments-table tbody tr:hover {
+  background: linear-gradient(90deg, rgba(72, 187, 120, 0.05), rgba(56, 161, 105, 0.05));
+  transform: scale(1.01);
+}
+
+.appointments-table tbody tr:nth-child(even) {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+/* Delete/Cancel Button */
+.delete-btn {
+  background: linear-gradient(135deg, var(--danger), #e53e3e);
+  border: none;
+  color: white;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.delete-btn::before {
+  content: '❌';
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #e53e3e, #c53030);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.delete-btn:active {
+  transform: translateY(0);
+}
+
+/* Empty State Styling */
+table tbody tr td[colspan] {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 1rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+}
+
+.patients-table tbody tr td[colspan]::before {
+  content: '👤';
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.5;
+}
+
+.appointments-table tbody tr td[colspan]::before {
+  content: '📅';
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.5;
+}
+
+/* Status Indicators */
+.status-indicator {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-confirmed {
+  background: rgba(72, 187, 120, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(72, 187, 120, 0.2);
+}
+
+.status-pending {
+  background: rgba(237, 137, 54, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(237, 137, 54, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .appointment-form {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .appointment-form button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .appointments-container {
+    padding: 1rem;
+  }
+  
+  .appointments-title {
+    font-size: 1.75rem;
+  }
+  
+  .appointment-form {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+  
+  .patients-table,
+  .appointments-table {
+    font-size: 0.85rem;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+  
+  .patients-table thead,
+  .patients-table tbody,
+  .patients-table th,
+  .patients-table td,
+  .patients-table tr,
+  .appointments-table thead,
+  .appointments-table tbody,
+  .appointments-table th,
+  .appointments-table td,
+  .appointments-table tr {
+    display: block;
+  }
+  
+  .patients-table thead tr,
+  .appointments-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  .patients-table tr,
+  .appointments-table tr {
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    background: white;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .patients-table td,
+  .appointments-table td {
+    border: none;
+    position: relative;
+    padding: 0.75rem 1rem 0.75rem 35%;
+    white-space: nowrap;
+  }
+  
+  .patients-table td::before,
+  .appointments-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    width: 30%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointments-title {
+    font-size: 1.75rem;
+  }
+  
+  .appointment-form {
+    padding: 1rem;
+  }
+  
+  .appointment-form select,
+  .appointment-form button {
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Loading Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appointment-form,
+.patients-table,
+.appointments-table {
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Focus indicators for accessibility */
+.appointment-form select:focus,
+.appointment-form input[type="time"]:focus,
+.appointment-form button:focus,
+.delete-btn:focus {
+  outline: 3px solid rgba(76, 175, 239, 0.5);
+  outline-offset: 2px;
+}
+/* Updated Appointments Title with MediTrack theme colors */
+.appointments-container h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  
+  /* MediTrack blue-purple gradient */
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.appointments-container h1::after {
+  content: '📅';
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  /* Reset the text fill for the emoji */
+  -webkit-text-fill-color: initial;
+}
+/* ... your full existing CSS code remains here ... */
+
+/* Mark Done Button */
+.markdone-btn {
+  background: linear-gradient(135deg, var(--success), #38a169);
+  border: none;
+  color: white;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+  margin-right: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.markdone-btn::before {
+  content: '✔️';
+  margin-right: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.markdone-btn:hover {
+  background: linear-gradient(135deg, #38a169, #2f855a);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.markdone-btn:active {
+  transform: translateY(0);
+}
+
+/* Cancel Button */
+.cancel-btn {
+  background: linear-gradient(135deg, var(--danger), #e53e3e);
+  border: none;
+  color: white;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.cancel-btn::before {
+  content: '❌';
+  margin-right: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.cancel-btn:hover {
+  background: linear-gradient(135deg, #e53e3e, #c53030);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.cancel-btn:active {
+  transform: translateY(0);
+}
+
+
+/* Print styles */
+@media print {
+  .appointments-container {
+    background: white;
+    padding: 1rem;
+  }
+  
+  .appointments-title,
+  h2 {
+    color: var(--primary);
+  }
+  
+  .appointment-form {
+    display: none;
+  }
+  
+  .delete-btn {
+    display: none;
+  }
+  
+  .patients-table,
+  .appointments-table {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}

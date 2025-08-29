@@ -1,0 +1,76 @@
+/* src/components/login.css */
+
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.left-panel {
+  flex: 1;
+  background: linear-gradient(45deg, #009FFD, #2A2A72);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.right-panel {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.login-form {
+  background: white;
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.login-form h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border: none;
+  background-color: #009FFD;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #007ACC;
+}
+.login-image {
+  margin-top: 20px;
+  width: 300px;
+  height: auto;
+}
+
+.text-image-wrapper {
+  text-align: center;
+}
